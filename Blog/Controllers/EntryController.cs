@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Blog.DAL;
+using Blog.Models;
+using Blog.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +14,25 @@ namespace Blog.Controllers
         // GET: Entry
         public ActionResult Index()
         {
-            return View();
+            EntryRepository entryRepository = new EntryRepository();
+
+            List<EntryModel> entries = new List<EntryModel>();
+
+            List<EntryVM> entriesVms = new List<EntryVM>();
+
+            foreach (EntryModel entry in entries)
+            {
+                EntryVM entryVM = new EntryVM();
+                entryVM.Id = entry.EntryID;
+                entryVM.Title = entry.EntryTitle;
+                entryVM.Text = entry.EntryText;
+                entriesVms.Add(entryVM);
+            }
+
+            EntryVM model = new EntryVM();
+            model.Entries = entriesVms;
+
+            return View(model);
         }
 
         public ActionResult CreateEntry()
