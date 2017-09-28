@@ -13,5 +13,15 @@ namespace Blog.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateEntry()
+        {
+            return View();
+        }
+
+        public ActionResult EditEntry()
+        {
+            return View();
+        }
     }
 }
