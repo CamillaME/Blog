@@ -16,7 +16,7 @@ namespace Blog.Controllers
         {
             EntryRepository entryRepository = new EntryRepository();
 
-            List<EntryModel> entries = new List<EntryModel>();
+            List<EntryModel> entries = entryRepository.GetAllEntries();
 
             List<EntryVM> entriesVms = new List<EntryVM>();
 
