@@ -37,13 +37,36 @@ namespace Blog.Controllers
 
         public ActionResult CreateEntry()
         {
+
             return View();
         }
 
         public ActionResult EditEntry(int id)
         {
+            EntryRepository entryRepository = new EntryRepository();
+            EntryModel entry = entryRepository.GetEntry(id);
 
-            return View();
+            EntryVM model = new EntryVM();
+
+            model.Id = entry.EntryID;
+            model.Title = entry.EntryTitle;
+            model.Text = entry.EntryText;
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditEntry (EntryVM model)
+        {
+            EntryModel entry = new EntryModel();
+
+            entry.EntryID = model.Id;
+            entry.EntryTitle = model.Title;
+            entry.EntryText = model.Text;
+
+            EntryRepository entryRepository = new EntryRepository();
+            entryRepository.UpdateEntry(entry);
+            return RedirectToAction("Index");
         }
     }
 }
