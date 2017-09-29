@@ -40,8 +40,9 @@ namespace Blog.Controllers
             return View();
         }
 
-        public ActionResult EditEntry()
+        public ActionResult EditEntry(int id)
         {
+
             return View();
         }
     }
