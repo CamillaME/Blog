@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Blog.DAL
 {
     public class EntryRepository
     {
-        public void CreateEntry(Entry entry)
+        public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
@@ -30,7 +31,7 @@ namespace Blog.DAL
             }
         }
 
-        public void UpdateEntry(Entry entry)
+        public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
@@ -73,9 +74,9 @@ namespace Blog.DAL
             }
         }
 
-        public Entry GetEntry(int id)
+        public EntryModel GetEntry(int id)
         {
-            Entry result = new Entry();
+            EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
@@ -87,7 +88,7 @@ namespace Blog.DAL
                 command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished FROM Entries WHERE EntryID = " + id;
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                Entry entry = new Entry();
+                EntryModel entry = new EntryModel();
                 entry.EntryID = reader.GetInt32(0);
                 entry.EntryTitle = reader.GetString(1);
                 entry.EntryDate = reader.GetDateTime(2);
@@ -107,9 +108,9 @@ namespace Blog.DAL
             return result;
         }
 
-        public List<Entry> GetAllEntries()
+        public List<EntryModel> GetAllEntries()
         {
-            List<Entry> result = new List<Entry>();
+            List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
@@ -123,7 +124,7 @@ namespace Blog.DAL
 
                 while (reader.Read())
                 {
-                    Entry entry = new Entry();
+                    EntryModel entry = new EntryModel();
                     entry.EntryID = reader.GetInt32(0);
                     entry.EntryTitle = reader.GetString(1);
                     entry.EntryDate = reader.GetDateTime(2);
