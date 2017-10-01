@@ -37,8 +37,23 @@ namespace Blog.Controllers
 
         public ActionResult CreateEntry()
         {
-
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateEntry(EntryVM model)
+        {
+            EntryModel entry = new EntryModel();
+            entry.EntryTitle = model.Title;
+            entry.EntryText = model.Text;
+            entry.EntryDate = DateTime.Now;
+            entry.EntryIsPublished = false;
+
+            EntryRepository entryRepository = new EntryRepository();
+
+            entryRepository.CreateEntry(entry);
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult EditEntry(int id)
@@ -66,6 +81,15 @@ namespace Blog.Controllers
 
             EntryRepository entryRepository = new EntryRepository();
             entryRepository.UpdateEntry(entry);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            EntryRepository entryRepository = new EntryRepository();
+
+            entryRepository.DeleteEntry(id);
+
             return RedirectToAction("Index");
         }
     }
