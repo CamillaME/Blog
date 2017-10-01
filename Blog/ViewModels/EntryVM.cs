@@ -15,6 +15,10 @@ namespace Blog.ViewModels
 
         public string Text { get; set; }
 
+        public bool IsPublished { get; set; }
+
+        public string Checked { get; set; }
+
         public List<EntryVM> Entries { get; set; }
     }
 }

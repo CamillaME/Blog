@@ -26,6 +26,8 @@ namespace Blog.Controllers
                 entryVM.Id = entry.EntryID;
                 entryVM.Title = entry.EntryTitle;
                 entryVM.Text = entry.EntryText;
+                entryVM.Date = entry.EntryDate;
+                entryVM.IsPublished = entry.EntryIsPublished;
                 entriesVms.Add(entryVM);
             }
 
@@ -41,6 +43,19 @@ namespace Blog.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CreateEntry(EntryVM model)
+        {
+            EntryModel entry = new EntryModel();
+            entry.EntryTitle = model.Title;
+            entry.EntryText = model.Text;
+            entry.EntryDate = model.Date;
+            entry.EntryIsPublished = model.IsPublished;
+            EntryRepository entryRepository = new EntryRepository();
+            entryRepository.CreateEntry(entry);
+            return RedirectToAction("Index");
+        }
+
         public ActionResult EditEntry(int id)
         {
             EntryRepository entryRepository = new EntryRepository();
@@ -51,22 +66,55 @@ namespace Blog.Controllers
             model.Id = entry.EntryID;
             model.Title = entry.EntryTitle;
             model.Text = entry.EntryText;
-            
+            model.IsPublished = entry.EntryIsPublished;
+            model.Date = entry.EntryDate;
+
+            if (model.IsPublished == true)
+            {
+                model.Checked = "checked";
+            }
+            else
+            {
+                model.Checked = "";
+            }
+
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditEntry (EntryVM model)
+        public ActionResult EditEntry(EntryVM model)
         {
             EntryModel entry = new EntryModel();
 
             entry.EntryID = model.Id;
             entry.EntryTitle = model.Title;
             entry.EntryText = model.Text;
+            entry.EntryIsPublished = model.IsPublished;
+            entry.EntryDate = model.Date;
 
             EntryRepository entryRepository = new EntryRepository();
             entryRepository.UpdateEntry(entry);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteEntry(int id)
+        {
+            EntryRepository entryRepository = new EntryRepository();
+            entryRepository.DeleteEntry(id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ShowEntry(int id)
+        {
+            EntryRepository entryRepository = new EntryRepository();
+            EntryModel entry = entryRepository.GetEntry(id);
+            EntryVM model = new EntryVM();
+            model.Id = entry.EntryID;
+            model.Title = entry.EntryTitle;
+            model.Text = entry.EntryText;
+            model.IsPublished = entry.EntryIsPublished;
+            model.Date = entry.EntryDate;
+            return View(model);
         }
     }
 }

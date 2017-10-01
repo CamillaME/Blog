@@ -1,5 +1,38 @@
-﻿@{
+﻿@model Blog.ViewModels.EntryVM
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h1>Alle indlæg</h1>
+<a href="/Entry/CreateEntry/" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Opret nyt indlæg</a>
+<hr />
+@foreach (var entryvm in Model.Entries)
+{
+    <div class="well">
+        <p>
+            @if (entryvm.IsPublished == true)
+            {
+                <b>
+                    Udgivet
+                </b>
+            }
+            else
+            {
+                <b>
+                    Kladde
+                </b>
+            }
+        </p>
+        <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
+        <h2>@entryvm.Title</h2>
+        <p>
+            @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
+        </p>
+        <div class="text-right">
+            <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
+            <a href="/Entry/EditEntry/@entryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
+            <a href="/Entry/DeleteEntry/@entryvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('Du er ved at slette et indlæg. Er du sikker på, du vil fortsætte?')">Slet</a>
+        </div>
+    </div>
+}

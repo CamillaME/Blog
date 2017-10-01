@@ -1,5 +1,37 @@
-﻿@{
+﻿@model Blog.ViewModels.EntryVM
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h1>Rediger indlæg</h1>
+<a href="/Entry/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>
+<hr />
+<form action="/Entry/EditEntry/" method="post" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="Date" value="@DateTime.Now" />
+    <div class="form-group">
+        <label>Titel på indlægget:</label>
+        <input name="Title" type="text" required class="form-control" value="@Model.Title" />
+    </div>
+    <div class="form-group">
+        <label>Selve indlægget:</label>
+        <textarea name="Text" class="form-control">@Model.Text</textarea>
+    </div>
+    <div class="form-group">
+        <label>Skal indlægget udgives?</label>
+        <input id="checkbox" name="IsPublished" type="checkbox" class="checbox checkbox_check" value="@Model.IsPublished.ToString().ToLower()" onclick="checkCheckbox();" @Model.Checked />
+    </div>
+    <input type="submit" name="CreateEntry" value="Opdater indlæg" class="btn btn-success" />
+</form>
+<script>
+    function checkCheckbox() {
+        if ($('input.checkbox_check').is(':checked')) {
+            $('input.checkbox_check').val('true');
+            $('input.checkbox_check').attr('checked', 'checked');
+        }
+        else {
+            $('input.checkbox_check').val('false');
+        }
+    }
+</script>

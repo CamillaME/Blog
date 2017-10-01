@@ -265,6 +265,8 @@
     <Content Include="Views\Entry\Index.cshtml" />
     <Content Include="Views\Entry\CreateEntry.cshtml" />
     <Content Include="Views\Entry\EditEntry.cshtml" />
+    <Content Include="Views\Entry\DeleteEntry.cshtml" />
+    <Content Include="Views\Entry\ShowEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,5 +20,14 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
+}
+
+.form-horizontal .form-group {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+textarea {
+    height: 200px !important;
 }
