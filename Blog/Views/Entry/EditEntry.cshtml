@@ -9,7 +9,6 @@
 <hr />
 <form action="/Entry/EditEntry/" method="post" class="form-horizontal">
     <input type="hidden" name="Id" value="@Model.Id" />
-    <input type="hidden" name="Date" value="@DateTime.Now" />
     <div class="form-group">
         <label>Titel på indlægget:</label>
         <input name="Title" type="text" required class="form-control" value="@Model.Title" />
