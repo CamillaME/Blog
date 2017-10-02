@@ -48,20 +48,13 @@ namespace Blog.Controllers
             EntryModel entry = new EntryModel();
             entry.EntryTitle = model.Title;
             entry.EntryText = model.Text;
-<<<<<<< HEAD
             entry.EntryDate = model.Date;
             entry.EntryIsPublished = model.IsPublished;
             EntryRepository entryRepository = new EntryRepository();
             entryRepository.CreateEntry(entry);
-=======
-            entry.EntryDate = DateTime.Now;
-            entry.EntryIsPublished = false;
 
-            EntryRepository entryRepository = new EntryRepository();
 
-            entryRepository.CreateEntry(entry);
 
->>>>>>> 60a2bec1624401b5e34a22ec0ca4cbd2b711d0fc
             return RedirectToAction("Index");
         }
 
@@ -106,14 +99,6 @@ namespace Blog.Controllers
             return RedirectToAction("Index");
         }
 
-<<<<<<< HEAD
-        public ActionResult DeleteEntry(int id)
-        {
-            EntryRepository entryRepository = new EntryRepository();
-            entryRepository.DeleteEntry(id);
-            return RedirectToAction("Index");
-        }
-
         public ActionResult ShowEntry(int id)
         {
             EntryRepository entryRepository = new EntryRepository();
@@ -125,7 +110,8 @@ namespace Blog.Controllers
             model.IsPublished = entry.EntryIsPublished;
             model.Date = entry.EntryDate;
             return View(model);
-=======
+        }
+
         public ActionResult Delete(int id)
         {
             EntryRepository entryRepository = new EntryRepository();
@@ -133,7 +119,7 @@ namespace Blog.Controllers
             entryRepository.DeleteEntry(id);
 
             return RedirectToAction("Index");
->>>>>>> 60a2bec1624401b5e34a22ec0ca4cbd2b711d0fc
+
         }
     }
 }
