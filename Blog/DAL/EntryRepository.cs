@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -47,14 +47,14 @@ namespace Blog.DAL
         public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                var sqlFormattedDate = entry.EntryDate.ToString("yyyy-MM-dd HH:mm:ss");
-
+                var sqlFormattedDate = entry.EntryDate.ToString("yyyy MM dd HH:mm");
+                DateTime dt = sqlFormattedDate.
                 var isPublished = 1;
 
                 if (entry.EntryIsPublished == true)
@@ -82,7 +82,7 @@ namespace Blog.DAL
         public void DeleteEntry(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -106,7 +106,7 @@ namespace Blog.DAL
             EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -140,7 +140,7 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {

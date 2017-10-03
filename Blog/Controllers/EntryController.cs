@@ -103,7 +103,7 @@ namespace Blog.Controllers
 
             if (entry.EntryIsPublished == true && model.IsPublished)
             {
-                entry.EntryDate = entry.EntryDate;
+                entry.EntryDate = model.Date;
             }
             else if (entry.EntryIsPublished == false && model.IsPublished)
             {
