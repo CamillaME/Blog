@@ -98,8 +98,10 @@ namespace Blog.Controllers
             //{
             //    entry.EntryDate = entry.EntryDate;
             //}
+            EntryRepository entryRepository1 = new EntryRepository();
+            EntryModel entry1 = entryRepository1.GetEntry(entry.EntryID);
 
-            if (entry.EntryIsPublished == true && model.IsPublished)
+            if (entry1.EntryIsPublished == true && model.IsPublished)
             {
                 entry.EntryDate = model.Date;
             }
