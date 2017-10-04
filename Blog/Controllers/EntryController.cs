@@ -99,8 +99,6 @@ namespace Blog.Controllers
             //    entry.EntryDate = entry.EntryDate;
             //}
 
-            entry.EntryIsPublished = model.IsPublished;
-
             if (entry.EntryIsPublished == true && model.IsPublished)
             {
                 entry.EntryDate = model.Date;
@@ -113,6 +111,8 @@ namespace Blog.Controllers
             {
                 entry.EntryDate = DateTime.Now;
             }
+
+            entry.EntryIsPublished = model.IsPublished;
 
             EntryRepository entryRepository = new EntryRepository();
             entryRepository.UpdateEntry(entry);

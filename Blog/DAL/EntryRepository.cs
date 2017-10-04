@@ -53,7 +53,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                var sqlFormattedDate = entry.EntryDate.ToString("yyyy MM dd HH:mm");
+                var sqlFormattedDate = entry.EntryDate.ToString("yyyy-MM-dd HH:mm");
 
                 var isPublished = 1;
 
