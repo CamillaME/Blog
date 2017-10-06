@@ -27,8 +27,10 @@ textarea {
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
-.pub{
-    height: 200px;
+
+p.pub{
+    height: 120px;
+    overflow: hidden;
 }
 
 textarea {

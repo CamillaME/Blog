@@ -15,10 +15,10 @@
                     Udgivet
                 </b>
             }
-        </p class="pub">
+        </p >
         <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
         <h2>@entryvm.Title</h2>
-        <p>
+        <p class="pub">
             @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
         </p>
         <div class="text-right">
