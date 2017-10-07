@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -31,7 +31,7 @@ namespace Blog.DAL
                     isPublished = 0;
                 }
 
-                command.CommandText = "INSERT INTO Entries (EntryTitle, EntryDate, EntryText, EntryIsPublished) VALUES ('" + entry.EntryTitle + "', '" + sqlFormattedDate + "', '" + entry.EntryText + "', " + isPublished + ")";
+                command.CommandText = "INSERT INTO Entries (EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID) VALUES ('" + entry.EntryTitle + "', '" + sqlFormattedDate + "', '" + entry.EntryText + "', " + isPublished + ", '" + entry.UserID + "')";
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -47,7 +47,7 @@ namespace Blog.DAL
         public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -82,7 +82,7 @@ namespace Blog.DAL
         public void DeleteEntry(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -106,7 +106,7 @@ namespace Blog.DAL
             EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -140,7 +140,7 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -171,5 +171,43 @@ namespace Blog.DAL
 
             return result;
         }
+
+        public List<EntryModel> GetAllEntries(string userID)
+        {
+            List<EntryModel> result = new List<EntryModel>();
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished FROM Entries WHERE UserID = '" + userID + "'";
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    EntryModel entry = new EntryModel();
+                    entry.EntryID = reader.GetInt32(0);
+                    entry.EntryTitle = reader.GetString(1);
+                    entry.EntryDate = reader.GetDateTime(2);
+                    entry.EntryText = reader.GetString(3);
+                    entry.EntryIsPublished = reader.GetBoolean(4);
+                    result.Add(entry);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
     }
 }

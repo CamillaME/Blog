@@ -16,5 +16,7 @@ namespace Blog.Models
         public string EntryText { get; set; }
 
         public bool EntryIsPublished { get; set; }
+
+        public string UserID { get; set; }
     }
 }

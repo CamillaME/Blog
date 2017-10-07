@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Blog.Controllers
 {
+    [Authorize]
     public class EntryController : Controller
     {
         // GET: Entry
@@ -16,9 +18,12 @@ namespace Blog.Controllers
         {
             EntryRepository entryRepository = new EntryRepository();
 
-            List<EntryModel> entries = entryRepository.GetAllEntries();
+            List<EntryModel> entries = entryRepository.GetAllEntries(User.Identity.GetUserId());
 
             List<EntryVM> entriesVms = new List<EntryVM>();
+
+            UserRepository userRepository = new UserRepository();
+            UserModel user = userRepository.GetUser(User.Identity.GetUserId());
 
             foreach (EntryModel entry in entries)
             {
@@ -28,6 +33,7 @@ namespace Blog.Controllers
                 entryVM.Text = entry.EntryText;
                 entryVM.Date = entry.EntryDate;
                 entryVM.IsPublished = entry.EntryIsPublished;
+                entryVM.UserName = user.UserName;
                 entriesVms.Add(entryVM);
             }
 
@@ -50,6 +56,7 @@ namespace Blog.Controllers
             entry.EntryText = model.Text;
             entry.EntryDate = DateTime.Now;
             entry.EntryIsPublished = model.IsPublished;
+            entry.UserID = User.Identity.GetUserId();
             EntryRepository entryRepository = new EntryRepository();
             entryRepository.CreateEntry(entry);
 

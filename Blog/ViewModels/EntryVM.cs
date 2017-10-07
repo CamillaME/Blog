@@ -20,5 +20,7 @@ namespace Blog.ViewModels
         public string Checked { get; set; }
 
         public List<EntryVM> Entries { get; set; }
+
+        public string UserName { get; set; }
     }
 }
