@@ -4,25 +4,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Styles.Render("~/Content/summernote")
+
 <h1>Opret indlæg</h1>
 <a href="/Entry/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>
 <hr />
 <form action="/Entry/CreateEntry/" method="post" class="form-horizontal">
     <div class="form-group">
         <label>Titel på indlægget:</label>
-        <input name="Title" type="text" required class="form-control" />
+        <input name="Title" type="text" required class="form-control" value="@Model.Title" />
     </div>
     <div class="form-group">
         <label>Selve indlægget:</label>
-        <textarea name="Text" class="form-control"></textarea>
+        @*<div contenteditable="true" class="form-control">@Model.Text</div>*@
+        <textarea id="Text" name="Text" class="form-control">@Model.Text</textarea>
+        @*@Html.TextAreaFor(model => model.Text, new { @class = "form-control", @row = 5, @Name = "Text" })*@
     </div>
     <div class="form-group">
         <label>Skal indlægget udgives?</label>
-        <input name="IsPublished" type="checkbox" class="checkbox_check" value="true" onclick="checkCheckbox();">
+        <input name="IsPublished" type="checkbox" class="checkbox_check" value="@Model.IsPublished" onclick="checkCheckbox();">
     </div>
+    <p>
+        <label class="alert-danger" style="@Model.ResultVisble">@Model.Result</label>
+    </p>
     <input type="submit" name="CreateEntry" value="Opret indlæg" class="btn btn-success" />
 </form>
-
 <script>
     function checkCheckbox() {
         if ($('input.checkbox_check').is(':checked')) {
@@ -33,4 +39,9 @@
         }
     }
 </script>
+
+@section scripts{
+    @Scripts.Render("~/bundle/summernote",
+                    "~/Scripts/home-index.js")
+}
 

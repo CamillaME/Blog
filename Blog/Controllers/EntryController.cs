@@ -45,22 +45,50 @@ namespace Blog.Controllers
 
         public ActionResult CreateEntry()
         {
-            return View();
+            EntryVM model = new EntryVM();
+            model.Result = "";
+            model.Title = "";
+            model.Text = "Text";
+            model.IsPublished = false;
+            model.ResultVisble = "display: none";
+            return View(model);
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreateEntry(EntryVM model)
         {
             EntryModel entry = new EntryModel();
-            entry.EntryTitle = model.Title;
-            entry.EntryText = model.Text;
-            entry.EntryDate = DateTime.Now;
-            entry.EntryIsPublished = model.IsPublished;
-            entry.UserID = User.Identity.GetUserId();
-            EntryRepository entryRepository = new EntryRepository();
-            entryRepository.CreateEntry(entry);
 
-            return RedirectToAction("Index");
+            if (model.Title.Contains("<"))
+            {
+                model.ResultVisble = "display: block";
+                model.Result = "Du kan ikke skrive HTML eller JavaScript i titlen...";
+                model.Title = "";
+                model.Text = model.Text;
+                return View(model);
+            }
+            else if ((model.Text != null && model.Text.Contains("<script")) ||
+                model.Text != null && model.Text.Contains("&lt;script"))
+            {
+                model.ResultVisble = "display: block";
+                model.Result = "Du kan ikke skrive JavaScript i indlæget...";
+                model.Title = model.Title;
+                model.Text = "";
+                return View(model);
+            }
+            else
+            {
+                entry.EntryTitle = model.Title;
+                entry.EntryText = model.Text;
+                entry.EntryDate = DateTime.Now;
+                entry.EntryIsPublished = model.IsPublished;
+                entry.UserID = User.Identity.GetUserId();
+                EntryRepository entryRepository = new EntryRepository();
+                entryRepository.CreateEntry(entry);
+
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult EditEntry(int id)

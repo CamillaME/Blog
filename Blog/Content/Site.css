@@ -28,11 +28,12 @@ textarea {
     margin-left: 0 !important;
 }
 
-p.pub{
+p.pub {
     height: 120px;
     overflow: hidden;
 }
 
 textarea {
     height: 200px !important;
+    resize: none;
 }

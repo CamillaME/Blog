@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Blog.ViewModels
 {
@@ -22,5 +23,9 @@ namespace Blog.ViewModels
         public List<EntryVM> Entries { get; set; }
 
         public string UserName { get; set; }
+
+        public string Result { get; set; }
+
+        public string ResultVisble { get; set; }
     }
 }

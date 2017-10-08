@@ -16,12 +16,16 @@
                 <b>
                     Udgivet
                 </b>
+                <span>|</span>
+                <b>Skrevet af <i><a href="#">@entryvm.UserName</a></i></b>
             }
             else
             {
                 <b>
                     Kladde
                 </b>
+                <span>|</span>
+                <b>Skrevet af <i><a href="#">@entryvm.UserName</a></i></b>
             }
         </p>
         <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
@@ -29,7 +33,6 @@
         <p>
             @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
         </p>
-        <p>Skrevet af <i><a href="#">@entryvm.UserName</a></i></p>
         <div class="text-right">
             <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
             <a href="/Entry/EditEntry/@entryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
