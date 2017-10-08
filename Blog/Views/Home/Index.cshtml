@@ -5,24 +5,31 @@
 <h1>Alle udgivet indlæg</h1>
 
 <hr />
-@foreach (var entryvm in Model.Entries)
-{
-    <div class="well">
-        <p>
-            @if (entryvm.IsPublished == true)
-            {
-                <b>
-                    Udgivet
-                </b>
-            }
-        </p >
-        <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
-        <h2>@entryvm.Title</h2>
-        <p class="pub">
-            @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
-        </p>
-        <div class="text-right">
-            <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
+<div class="line">
+    @foreach (var entryvm in Model.Entries)
+    {
+        <div class="well">
+            <p>
+                @if (entryvm.IsPublished == true)
+                {
+                    <b>
+                        Udgivet
+                    </b>
+                }
+            </p>
+            <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
+            <h2>@entryvm.Title</h2>
+            <p class="pub">
+                @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
+            </p>
+            <div class="text-right">
+                <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
+            </div>
         </div>
+    }
+</div>
+<div class="profile">
+    <div class="well ">
+        Test
     </div>
-}
+</div>

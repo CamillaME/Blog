@@ -28,8 +28,27 @@ textarea {
     margin-left: 0 !important;
 }
 
+.line{
+    border-right:1px solid lightgray;
+    display:inline-block;
+    float:left;
+    width: 800px;
+    padding-right:10px;
+}
+
+footer {
+    width: 100%;
+    clear: both;
+}
+
+.profile{
+    width:340px;
+    padding-left: 10px;
+    float:right;
+}
+
 p.pub {
-    height: 120px;
+    height: 230px;
     overflow: hidden;
 }
 
