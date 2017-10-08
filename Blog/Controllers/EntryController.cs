@@ -48,7 +48,7 @@ namespace Blog.Controllers
             EntryVM model = new EntryVM();
             model.Result = "";
             model.Title = "";
-            model.Text = "Text";
+            model.Text = "";
             model.IsPublished = false;
             model.ResultVisble = "display: none";
             return View(model);
