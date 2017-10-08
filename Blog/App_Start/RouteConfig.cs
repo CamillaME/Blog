@@ -15,8 +15,8 @@ namespace Blog
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{secondid}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, secondid = UrlParameter.Optional }
             );
         }
     }

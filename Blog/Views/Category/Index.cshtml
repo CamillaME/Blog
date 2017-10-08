@@ -1,0 +1,41 @@
+﻿@model Blog.ViewModels.CategoryVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Alle kategorier</h1>
+<a href="/Category/CreateCategory/" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Opret ny kategori</a>
+<hr />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>
+                Kategoriens navn
+            </td>
+            <td>
+                Beskrivelse af kategorien
+            </td>
+            <td>
+                Handling
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoryvm in Model.Categories)
+        {
+            <tr>
+                <td>
+                    @categoryvm.Name
+                </td>
+                <td>
+                    @categoryvm.Description
+                </td>
+                <td>
+                    <a href="/Category/EditCategory/@categoryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
+                    <a href="/Category/DeleteCategory/@categoryvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('Du er ved at slette en kategori. Er du sikker på, du vil fortsætte?')">Slet</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

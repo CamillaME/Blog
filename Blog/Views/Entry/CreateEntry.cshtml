@@ -24,6 +24,18 @@
         <label>Skal indlægget udgives?</label>
         <input name="IsPublished" type="checkbox" class="checkbox_check" value="@Model.IsPublished" onclick="checkCheckbox();">
     </div>
+    @*<div class="form-group">
+        <label>Kategorier:</label>
+        <div class="row">
+            @foreach (var categoryvm in Model.Categories)
+            {
+                <div class="col-sm-4">
+                    @categoryvm.Name
+                    <a href="/EntryCategory/Create/" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Tilføj til kategori</a>
+                </div>
+            }
+        </div>
+    </div>*@
     <p>
         <label class="alert-danger" style="@Model.ResultVisble">@Model.Result</label>
     </p>

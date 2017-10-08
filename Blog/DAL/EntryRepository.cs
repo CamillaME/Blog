@@ -31,8 +31,9 @@ namespace Blog.DAL
                     isPublished = 0;
                 }
 
-                command.CommandText = "INSERT INTO Entries (EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID) VALUES ('" + entry.EntryTitle + "', '" + sqlFormattedDate + "', '" + entry.EntryText + "', " + isPublished + ", '" + entry.UserID + "')";
-                command.ExecuteNonQuery();
+                command.CommandText = "INSERT INTO Entries (EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID) VALUES ('" + entry.EntryTitle + "', '" + sqlFormattedDate + "', '" + entry.EntryText + "', " + isPublished + ", '" + entry.UserID + "'); SELECT CAST(scope_identity() AS int)";
+                command.ExecuteScalar();
+                entry.EntryID = Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception ex)
             {

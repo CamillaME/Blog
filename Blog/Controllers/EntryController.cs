@@ -25,6 +25,8 @@ namespace Blog.Controllers
             UserRepository userRepository = new UserRepository();
             UserModel user = userRepository.GetUser(User.Identity.GetUserId());
 
+            EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
+
             foreach (EntryModel entry in entries)
             {
                 EntryVM entryVM = new EntryVM();
@@ -34,6 +36,7 @@ namespace Blog.Controllers
                 entryVM.Date = entry.EntryDate;
                 entryVM.IsPublished = entry.EntryIsPublished;
                 entryVM.UserName = user.UserName;
+
                 entriesVms.Add(entryVM);
             }
 
@@ -45,12 +48,30 @@ namespace Blog.Controllers
 
         public ActionResult CreateEntry()
         {
+            //CategoryRepository categoryRepository = new CategoryRepository();
+
+            //List<CategoryModel> categories = categoryRepository.GetCategories();
+
+            //List<CategoryVM> categoryVms = new List<CategoryVM>();
+
             EntryVM model = new EntryVM();
             model.Result = "";
             model.Title = "";
             model.Text = "";
             model.IsPublished = false;
             model.ResultVisble = "display: none";
+
+            //foreach (CategoryModel category in categories)
+            //{
+            //    CategoryVM categoryVM = new CategoryVM();
+            //    categoryVM.Id = category.Id;
+            //    categoryVM.Name = category.Name;
+            //    categoryVM.Description = category.Description;
+            //    categoryVms.Add(categoryVM);
+            //}
+
+            //model.Categories = categoryVms;
+
             return View(model);
         }
 
@@ -59,6 +80,23 @@ namespace Blog.Controllers
         public ActionResult CreateEntry(EntryVM model)
         {
             EntryModel entry = new EntryModel();
+
+            //CategoryRepository categoryRepository = new CategoryRepository();
+
+            //List<CategoryModel> categories = categoryRepository.GetCategories();
+
+            //List<CategoryVM> categoryVms = new List<CategoryVM>();
+
+            //foreach (CategoryModel category in categories)
+            //{
+            //    CategoryVM categoryVM = new CategoryVM();
+            //    categoryVM.Id = category.Id;
+            //    categoryVM.Name = category.Name;
+            //    categoryVM.Description = category.Description;
+            //    categoryVms.Add(categoryVM);
+            //}
+
+            //model.Categories = categoryVms;
 
             if (model.Title.Contains("<"))
             {
@@ -87,7 +125,7 @@ namespace Blog.Controllers
                 EntryRepository entryRepository = new EntryRepository();
                 entryRepository.CreateEntry(entry);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "EntryCategory", new { id = entry.EntryID });
             }
         }
 

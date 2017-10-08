@@ -27,5 +27,9 @@ namespace Blog.ViewModels
         public string Result { get; set; }
 
         public string ResultVisble { get; set; }
+
+        public List<EntryCategoryVM> EntryCategories { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

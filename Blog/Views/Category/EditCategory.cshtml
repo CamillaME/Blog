@@ -1,0 +1,22 @@
+﻿@model Blog.ViewModels.CategoryVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Rediger kategori</h1>
+<a href="/Entry/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>
+<hr />
+<form action="/Category/EditCategory/" method="post" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group">
+        <label>Kategoriens navn:</label>
+        <input name="Name" type="text" required class="form-control" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label>Beskrivelse af kategorien:</label>
+        <textarea name="Description" class="form-control">@Model.Description</textarea>
+    </div>
+    <input type="submit" name="EditCategory" value="Opdater kategori" class="btn btn-success" />
+</form>
+
