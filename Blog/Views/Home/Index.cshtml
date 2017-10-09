@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>Alle udgivet indlæg</h1>
+<h1>Alle indlæg</h1>
 
 <hr />
 <div class="line">
@@ -13,7 +13,7 @@
                 @if (entryvm.IsPublished == true)
                 {
                     <b>
-                        Udgivet
+                        Skrevet af @entryvm.UserName
                     </b>
                 }
             </p>
@@ -23,13 +23,16 @@
                 @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
             </p>
             <div class="text-right">
-                <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
+                <a href="/Home/Show/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
             </div>
         </div>
     }
 </div>
 <div class="profile">
-    <div class="well ">
-        Test
+    <div class="well">
+            @Html.Partial("_LoginPartial")
+        <p class="hi">
+            Hej
+        </p>
     </div>
 </div>

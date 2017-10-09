@@ -32,7 +32,7 @@ textarea {
     border-right:1px solid lightgray;
     display:inline-block;
     float:left;
-    width: 800px;
+    width: 68%;
     padding-right:10px;
 }
 
@@ -42,9 +42,13 @@ footer {
 }
 
 .profile{
-    width:340px;
+    width:32%;
     padding-left: 10px;
     float:right;
+}
+
+.hi{
+    float:left;
 }
 
 p.pub {

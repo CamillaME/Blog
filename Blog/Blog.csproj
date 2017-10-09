@@ -290,6 +290,7 @@
     <Content Include="Views\EntryCategory\Create.cshtml" />
     <Content Include="Views\EntryCategory\Index.cshtml" />
     <Content Include="Views\EntryCategory\Delete.cshtml" />
+    <Content Include="Views\Home\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
