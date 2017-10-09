@@ -291,6 +291,7 @@
     <Content Include="Views\EntryCategory\Index.cshtml" />
     <Content Include="Views\EntryCategory\Delete.cshtml" />
     <Content Include="Views\Home\Show.cshtml" />
+    <Content Include="Views\Home\_loginViewFront.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

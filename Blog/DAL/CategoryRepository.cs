@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateCategory(CategoryModel category)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -34,7 +34,7 @@ namespace Blog.DAL
         public void UpdateCategory(CategoryModel category)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -56,7 +56,7 @@ namespace Blog.DAL
         public void DeleteCategory(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -80,7 +80,7 @@ namespace Blog.DAL
             List<CategoryModel> result = new List<CategoryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -115,7 +115,7 @@ namespace Blog.DAL
             CategoryModel result = new CategoryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {

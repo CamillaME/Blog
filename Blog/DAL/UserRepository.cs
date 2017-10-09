@@ -14,7 +14,7 @@ namespace Blog.DAL
             UserModel result = new UserModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
