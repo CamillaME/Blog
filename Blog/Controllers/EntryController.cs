@@ -223,8 +223,16 @@ namespace Blog.Controllers
         public ActionResult DeleteEntry(int id)
         {
             EntryRepository entryRepository = new EntryRepository();
+            EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
+
+            List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(id);
 
             entryRepository.DeleteEntry(id);
+
+            foreach(EntryCategoryModel entryCategory in entryCategories)
+            {
+                entryCategoryRepository.DeleteEntryCategory(entryCategory.EntryCategoryID);
+            }
 
             return RedirectToAction("Index");
 
