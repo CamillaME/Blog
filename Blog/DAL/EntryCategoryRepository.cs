@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateEntryCategory(EntryCategoryModel entryCategory)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -34,7 +34,7 @@ namespace Blog.DAL
         public void DeleteEntryCategory(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -58,7 +58,7 @@ namespace Blog.DAL
             EntryCategoryModel result = new EntryCategoryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -85,12 +85,76 @@ namespace Blog.DAL
             return result;
         }
 
+        public EntryCategoryModel GetEntryCategory(int entryID, int categoryID)
+        {
+            EntryCategoryModel result = new EntryCategoryModel();
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT EntryCategoryID, EntryID, CategoryID FROM EntryCategories WHERE EntryID = " + entryID + " AND CategoryID = " + categoryID;
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                EntryCategoryModel entryCategory = new EntryCategoryModel();
+                entryCategory.EntryCategoryID = reader.GetInt32(0);
+                entryCategory.EntryID = reader.GetInt32(1);
+                entryCategory.CategoryID = reader.GetInt32(2);
+                result = entryCategory;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+        public EntryCategoryModel GetEntryCategoryByEntryID(int id)
+        {
+            EntryCategoryModel result = new EntryCategoryModel();
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT EntryCategoryID, EntryID, CategoryID FROM EntryCategories WHERE EntryID = " + id;
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                EntryCategoryModel entryCategory = new EntryCategoryModel();
+                entryCategory.EntryCategoryID = reader.GetInt32(0);
+                entryCategory.EntryID = reader.GetInt32(1);
+                entryCategory.CategoryID = reader.GetInt32(2);
+                result = entryCategory;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
         public List<EntryCategoryModel> GetEntryCategories()
         {
             List<EntryCategoryModel> result = new List<EntryCategoryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -124,7 +188,7 @@ namespace Blog.DAL
             List<EntryCategoryModel> result = new List<EntryCategoryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -152,5 +216,40 @@ namespace Blog.DAL
 
             return result;
         }
+
+        public List<EntryCategoryModel> GetEntryCategories(int entryID, int categoryID)
+        {
+            List<EntryCategoryModel> result = new List<EntryCategoryModel>();
+
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT EntryCategoryID, EntryID, CategoryID FROM EntryCategories WHERE EntryID = " + entryID + " AND CategoryID = " + categoryID;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    EntryCategoryModel entryCategory = new EntryCategoryModel();
+                    entryCategory.EntryCategoryID = reader.GetInt32(0);
+                    entryCategory.EntryID = reader.GetInt32(1);
+                    entryCategory.CategoryID = reader.GetInt32(2);
+                    result.Add(entryCategory);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
     }
 }

@@ -24,25 +24,23 @@ namespace Blog.Controllers
 
             EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
 
-            List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories();
-
             foreach (CategoryModel category in categories)
             {
                 CategoryVM categoryVM = new CategoryVM();
                 categoryVM.Id = category.Id;
                 categoryVM.Name = category.Name;
                 categoryVM.Description = category.Description;
-                categoryVM.EntryCategoryID = entryCategoryRepository.GetEntryCategory(category.Id).EntryCategoryID;
+                categoryVM.EntryCategoryID = entryCategoryRepository.GetEntryCategory(id, category.Id).EntryCategoryID;
 
-                if (entryCategoryRepository.GetEntryCategory(category.Id).EntryID != id)
-                {
-                    categoryVM.IsCategory = "block";
-                    categoryVM.IsNotCategory = "none";
-                }
-                else
+                if (entryCategoryRepository.GetEntryCategories(id, category.Id).Count > 0)
                 {
                     categoryVM.IsCategory = "none";
                     categoryVM.IsNotCategory = "block";
+                }
+                else
+                {
+                    categoryVM.IsCategory = "block";
+                    categoryVM.IsNotCategory = "none";
                 }
 
                 categoryVms.Add(categoryVM);
