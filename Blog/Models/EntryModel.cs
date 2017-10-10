@@ -18,7 +18,5 @@ namespace Blog.Models
         public bool EntryIsPublished { get; set; }
 
         public string UserID { get; set; }
-
-        public int NewID { get; set; }
     }
 }

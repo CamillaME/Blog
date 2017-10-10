@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -48,7 +48,7 @@ namespace Blog.DAL
         public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -83,7 +83,7 @@ namespace Blog.DAL
         public void DeleteEntry(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -107,13 +107,13 @@ namespace Blog.DAL
             EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished FROM Entries WHERE EntryID = " + id;
+                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID FROM Entries WHERE EntryID = " + id;
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 EntryModel entry = new EntryModel();
@@ -122,6 +122,7 @@ namespace Blog.DAL
                 entry.EntryDate = reader.GetDateTime(2);
                 entry.EntryText = reader.GetString(3);
                 entry.EntryIsPublished = reader.GetBoolean(4);
+                entry.UserID = reader.GetString(5);
                 result = entry;
             }
             catch (Exception ex)
@@ -141,7 +142,7 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -178,7 +179,7 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {

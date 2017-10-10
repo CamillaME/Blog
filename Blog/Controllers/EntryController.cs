@@ -23,7 +23,6 @@ namespace Blog.Controllers
             List<EntryVM> entriesVms = new List<EntryVM>();
 
             UserRepository userRepository = new UserRepository();
-            UserModel user = userRepository.GetUser(User.Identity.GetUserId());
 
             EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
 
@@ -35,6 +34,9 @@ namespace Blog.Controllers
 
             foreach (EntryModel entry in entries)
             {
+                string userID = entryRepository.GetEntry(entry.EntryID).UserID;
+                UserModel user = userRepository.GetUser(userID);
+
                 EntryVM entryVM = new EntryVM();
                 entryVM.Id = entry.EntryID;
                 entryVM.Title = entry.EntryTitle;
@@ -93,23 +95,6 @@ namespace Blog.Controllers
         public ActionResult CreateEntry(EntryVM model)
         {
             EntryModel entry = new EntryModel();
-
-            //CategoryRepository categoryRepository = new CategoryRepository();
-
-            //List<CategoryModel> categories = categoryRepository.GetCategories();
-
-            //List<CategoryVM> categoryVms = new List<CategoryVM>();
-
-            //foreach (CategoryModel category in categories)
-            //{
-            //    CategoryVM categoryVM = new CategoryVM();
-            //    categoryVM.Id = category.Id;
-            //    categoryVM.Name = category.Name;
-            //    categoryVM.Description = category.Description;
-            //    categoryVms.Add(categoryVM);
-            //}
-
-            //model.Categories = categoryVms;
 
             if (model.Title.Contains("<"))
             {

@@ -20,13 +20,15 @@ namespace Blog.Controllers
             List<EntryModel> entries = entryRepository.GetAllEntries();
 
             UserRepository userRepository = new UserRepository();
-            UserModel user = userRepository.GetUser(User.Identity.GetUserId());
 
             List<EntryVM> entriesVms = new List<EntryVM>();
 
             foreach (EntryModel entry in entries)
             {
-                if(entry.EntryIsPublished == true)
+                string userID = entryRepository.GetEntry(entry.EntryID).UserID;
+                UserModel user = userRepository.GetUser(userID);
+
+                if (entry.EntryIsPublished == true)
                 {
                     EntryVM entryVM = new EntryVM();
                     entryVM.Id = entry.EntryID;
