@@ -215,6 +215,7 @@
     <Compile Include="ViewModels\CategoryVM.cs" />
     <Compile Include="ViewModels\EntryCategoryVM.cs" />
     <Compile Include="ViewModels\EntryVM.cs" />
+    <Compile Include="ViewModels\UserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -295,7 +296,6 @@
     <Content Include="Views\Home\Show.cshtml" />
 <<<<<<< HEAD
     <Content Include="Views\Home\_loginViewFront.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\_loginViewFront.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
@@ -303,12 +303,10 @@
 =======
     <Content Include="Views\Shared\_loginViewFront.cshtml" />
 >>>>>>> 6b959626658b26d2b0259ee49e6b8f9063480a40
-=======
->>>>>>> parent of e5e8398... Changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

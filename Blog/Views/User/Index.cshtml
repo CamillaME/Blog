@@ -1,9 +1,10 @@
 ﻿@model Blog.ViewModels.EntryVM
+
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>Alle indlæg</h1>
 
+<h1>Blog indlæg af </h1>
 <hr />
 <div class="line">
     @foreach (var entryvm in Model.Entries)
@@ -11,12 +12,19 @@
         <div class="well">
             <div class="pub">
                 <p>
-                    @if (entryvm.IsPublished == true)
+                    @{ int counter = 0; }
+                    @foreach (var categoryname in entryvm.CategoryNames)
                 {
-                        <b>
-                            Skrevet af @entryvm.UserName
-                        </b>
+                    counter++;
+                        @categoryname
+                        if (counter < entryvm.CategoryNames.Count)
+                        {
+                            @Html.Raw(", ")
+                        }
                     }
+                </p>
+                <p>
+                    <b>Skrevet af <i><a href="#">@entryvm.UserName</a></i></b>
                 </p>
                 <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
                 <h2>@entryvm.Title</h2>
@@ -28,8 +36,7 @@
                 <a href="/Home/Show/@entryvm.Id" class="btn btn-xs btn-primary">Vis mere</a>
             </div>
         </div>
-
-    }
+                        }
 </div>
 <div class="profile">
     <div class="well">
@@ -38,3 +45,5 @@
         </div>
     </div>
 </div>
+
+

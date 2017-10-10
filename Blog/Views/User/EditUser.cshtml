@@ -1,0 +1,30 @@
+﻿@model Blog.ViewModels.UserVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Rediger profil</h1>
+<form action="/User/EditUser/" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Email:</label>
+        <input name="Email" type="text" required class="form-control" value="@Model.Email" />
+    </div>
+    <div class="form-group">
+        <label>Bekskrivelse:</label>
+        <textarea name="Description" class="form-control">@Model.Description</textarea>
+    </div>
+    <div class="form-group">
+        <label>Billede:</label>
+        <input name="PicturePath" type="file" class="form-control" value="" accept=".png, .jpg, .jpeg" />
+    </div>
+    <div class="form-group">
+        <label>Alder:</label>
+        <input name="Age" type="number" class="form-control" value="@Model.Age" />
+    </div>
+    <div class="form-group">
+        <a href="/User/DeleteUser/@Model.Id" class="btn btn-xs btn-danger" onclick="return confirm('Er du sikker på du ønsker at slette din bruger? Dit valg kan ikke fortrydes!')">Ønsker du at slette din bruger?</a>
+    </div>
+    <input type="submit" name="EditUser" value="Opdater profil" class="btn btn-success" />
+</form>
+
