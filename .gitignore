@@ -264,3 +264,4 @@ Blog/DAL/UserRepository.cs
 Blog/DAL/EntryRepository.cs
 Blog/DAL/EntryCategoryRepository.cs
 Blog/DAL/CategoryRepository.cs
+Blog/DAL/EntryRepository.cs

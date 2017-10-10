@@ -220,6 +220,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\Img\avatar-1577909_640.png" />
     <Content Include="Content\summernote\summernote.css" />
     <Content Include="Content\summernote\summernote.js" />
     <Content Include="favicon.ico" />
