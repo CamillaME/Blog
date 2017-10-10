@@ -1,6 +1,7 @@
 ﻿using Blog.DAL;
 using Blog.Models;
 using Blog.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Blog.Controllers
         {
             CategoryRepository categoryRepository = new CategoryRepository();
 
-            List<CategoryModel> categories = categoryRepository.GetCategories();
+            List<CategoryModel> categories = categoryRepository.GetCategories(User.Identity.GetUserId());
 
             List<CategoryVM> categoryVms = new List<CategoryVM>();
 

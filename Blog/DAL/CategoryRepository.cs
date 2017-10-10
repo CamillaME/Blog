@@ -18,7 +18,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO Categories (CategoryName, CategoryDescription) VALUES ('" + category.Name + "', '" + category.Description + "')";
+                command.CommandText = "INSERT INTO Categories (CategoryName, CategoryDescription, UserID) VALUES ('" + category.Name + "', '" + category.Description + "', '" + category.UserID + "')";
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace Blog.DAL
             }
         }
 
-        public List<CategoryModel> GetCategories()
+        public List<CategoryModel> GetCategories(string userID)
         {
             List<CategoryModel> result = new List<CategoryModel>();
 
@@ -86,7 +86,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT CategoryID, CategoryName, CategoryDescription FROM Categories";
+                command.CommandText = "SELECT CategoryID, CategoryName, CategoryDescription FROM Categories WHERE UserID = '" + userID + "'";
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
