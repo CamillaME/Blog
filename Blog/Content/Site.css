@@ -34,6 +34,7 @@ textarea {
     margin-bottom: 10px;
     background-color: dimgray;
     border:0px;
+    color:antiquewhite;
 }
 
 .line{
@@ -82,6 +83,7 @@ footer {
 div.pub {
     height: 300px;
     overflow: hidden;
+    color: antiquewhite;
 }
 
 textarea {
