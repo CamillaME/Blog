@@ -27,6 +27,12 @@ namespace Blog.Controllers
 
             EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
 
+            CategoryRepository categoryRepository = new CategoryRepository();
+
+            List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
+
+            EntryVM model = new EntryVM();
+
             foreach (EntryModel entry in entries)
             {
                 EntryVM entryVM = new EntryVM();
@@ -37,10 +43,17 @@ namespace Blog.Controllers
                 entryVM.IsPublished = entry.EntryIsPublished;
                 entryVM.UserName = user.UserName;
 
+                List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(entry.EntryID);
+
+                foreach (EntryCategoryModel entryCategory in entryCategories)
+                {
+                    CategoryModel categoryModel = categoryRepository.GetCategory(entryCategory.CategoryID);
+                    entryVM.CategoryNames.Add(categoryModel.Name);
+                }
+
                 entriesVms.Add(entryVM);
             }
 
-            EntryVM model = new EntryVM();
             model.Entries = entriesVms;
 
             return View(model);

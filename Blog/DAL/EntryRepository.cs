@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -32,7 +32,7 @@ namespace Blog.DAL
                 }
 
                 command.CommandText = "INSERT INTO Entries (EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID) VALUES ('" + entry.EntryTitle + "', '" + sqlFormattedDate + "', '" + entry.EntryText + "', " + isPublished + ", '" + entry.UserID + "'); SELECT CAST(scope_identity() AS int)";
-                command.ExecuteScalar();
+                //command.ExecuteScalar();
                 entry.EntryID = Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace Blog.DAL
         public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -83,7 +83,7 @@ namespace Blog.DAL
         public void DeleteEntry(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -107,7 +107,7 @@ namespace Blog.DAL
             EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -141,7 +141,7 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -178,7 +178,7 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
 
             try
             {

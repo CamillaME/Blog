@@ -14,5 +14,7 @@ namespace Blog.ViewModels
         public int CategoryID { get; set; }
 
         public List<CategoryVM> Categories { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }
