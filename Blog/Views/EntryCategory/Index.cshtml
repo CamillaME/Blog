@@ -5,8 +5,6 @@
 }
 
 <h1>Tilføj kategorier til indlægget</h1>
-@*<form action="/EntryCategory/Create/" method="post" class="form-horizontal">*@
-@*<input name="EntryID" type="hidden" value="@Url.RequestContext.RouteData.Values["id"]" />*@
 <div class="form-group">
     <label>Kategorier:</label>
     <div class="row">
@@ -25,4 +23,5 @@
         }
     </div>
 </div>
-@*</form>*@
+<a href="/Entry/EditEntry/@Url.RequestContext.RouteData.Values["id"]" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage</a>
+<a href="/Entry/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Færdig</a>

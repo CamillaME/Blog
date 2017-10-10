@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Styles.Render("~/Content/summernote")
+
 <h1>Rediger indlæg</h1>
 <a href="/Entry/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>
 <hr />
@@ -16,7 +18,7 @@
     </div>
     <div class="form-group">
         <label>Selve indlægget:</label>
-        <textarea name="Text" class="form-control">@Model.Text</textarea>
+        <textarea id="Text" name="Text" class="form-control">@Model.Text</textarea>
     </div>
     <div class="form-group">
         <label>Skal indlægget udgives?</label>
@@ -35,3 +37,8 @@
         }
     }
 </script>
+
+@section scripts{
+    @Scripts.Render("~/bundle/summernote",
+                    "~/Scripts/home-index.js")
+}
