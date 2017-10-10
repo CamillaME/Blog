@@ -28,13 +28,13 @@ namespace Blog.ViewModels
 
         public string ResultVisble { get; set; }
 
-        //public List<EntryCategoryVM> EntryCategories { get; set; }
-
         public List<String> CategoryNames { get; set; }
 
         public EntryVM()
         {
             CategoryNames = new List<string>();
         }
+
+        public string UserID { get; set; }
     }
 }
