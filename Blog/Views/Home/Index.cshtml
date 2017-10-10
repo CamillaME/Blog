@@ -9,23 +9,26 @@
     @foreach (var entryvm in Model.Entries)
     {
         <div class="well">
-            <p>
-                @if (entryvm.IsPublished == true)
+            <div class="pub">
+                <p>
+                    @if (entryvm.IsPublished == true)
                 {
-                    <b>
-                        Skrevet af @entryvm.UserName
-                    </b>
-                }
-            </p>
-            <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
-            <h2>@entryvm.Title</h2>
-            <p class="pub">
-                @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
-            </p>
-            <div class="text-right">
-                <a href="/Home/Show/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
+                        <b>
+                            Skrevet af @entryvm.UserName
+                        </b>
+                    }
+                </p>
+                <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
+                <h2>@entryvm.Title</h2>
+                <p>
+                    @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
+                </p>
             </div>
-        </div>
+            <div class="text-right">
+                <a href="/Home/Show/@entryvm.Id" class="btn btn-xs btn-primary">Vis mere</a>
+            </div>
+        </div>            
+
     }
 </div>
 <div class="profile">

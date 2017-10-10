@@ -1,6 +1,7 @@
 ﻿using Blog.DAL;
 using Blog.Models;
 using Blog.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace Blog.Controllers
 
             List<EntryModel> entries = entryRepository.GetAllEntries();
 
+            UserRepository userRepository = new UserRepository();
+            UserModel user = userRepository.GetUser(User.Identity.GetUserId());
+
             List<EntryVM> entriesVms = new List<EntryVM>();
 
             foreach (EntryModel entry in entries)
@@ -30,6 +34,7 @@ namespace Blog.Controllers
                     entryVM.Text = entry.EntryText;
                     entryVM.Date = entry.EntryDate;
                     entryVM.IsPublished = entry.EntryIsPublished;
+                    entryVM.UserName = user.UserName;
                     entriesVms.Add(entryVM);
                 }
                 else

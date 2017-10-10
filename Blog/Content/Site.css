@@ -30,15 +30,14 @@ textarea {
 }
 
 .well{
-    padding:0px;
-    margin-bottom: 0px;
+    padding-bottom:0px;
+    margin-bottom: 10px;
     background-color: dimgray;
     border:0px;
 }
 
 .line{
     border-right:1px solid lightgray;
-    display:inline-block;
     float:left;
     width: 68%;
     padding-right:10px;
@@ -51,11 +50,15 @@ footer {
 }
 
 .profile{
-    width:32%;
-    padding-left: 10px;
+    width:31%;
+    margin-left: 10px;
     float:right;
     background-color:dimgray;
     border-radius: 4px;
+}
+
+.text-right{
+    padding-bottom:3px;
 }
 
 .loginList {
@@ -76,8 +79,8 @@ footer {
     height: 0;
 }*/
 
-p.pub {
-    height: 230px;
+div.pub {
+    height: 300px;
     overflow: hidden;
 }
 
