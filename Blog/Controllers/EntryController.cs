@@ -43,7 +43,6 @@ namespace Blog.Controllers
                 entryVM.Text = entry.EntryText;
                 entryVM.Date = entry.EntryDate;
                 entryVM.IsPublished = entry.EntryIsPublished;
-                entryVM.UserID = entry.UserID;
                 entryVM.UserName = user.UserName;
 
                 List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(entry.EntryID);

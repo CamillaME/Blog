@@ -14,23 +14,17 @@ namespace Blog.DAL
             UserModel result = new UserModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT Id, Email, UserName, UserDescription, UserPicturePath, UserAge FROM AspNetUsers WHERE Id = '" + id + "'";
+                command.CommandText = "SELECT UserName FROM AspNetUsers WHERE Id = '" + id + "'";
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 UserModel user = new UserModel();
-                user.UserID = reader.GetString(0);
-                user.Email = reader.GetString(1);
-                user.UserName = reader.GetString(2);
-                user.Description = reader.GetString(3);
-                user.PicturePath = reader.GetString(4);
-                user.Age = reader.GetInt32(5);
-
+                user.UserName = reader.GetString(0);
                 result = user;
             }
             catch (Exception ex)
@@ -43,50 +37,6 @@ namespace Blog.DAL
             }
 
             return result;
-        }
-
-        public void UpdateUser(UserModel user)
-        {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
-
-            try
-            {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE AspNetUsers SET Email = '" + user.Email + "', UserDescription = '" + user.Description + "', UserPicturePath = '" + user.PicturePath + "', UserAge = " + user.Age + " WHERE Id = '" + user.UserID + "'";
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        public void DeleteUser(string id)
-        {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
-
-            try
-            {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText = "DELETE FROM AspNetUsers WHERE Id = '" + id + "'";
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                connection.Close();
-            }
         }
     }
 }

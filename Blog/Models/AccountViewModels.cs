@@ -63,10 +63,6 @@ namespace Blog.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
-
-        public string UserDescription { get; set; }
-        public int UserAge { get; set; }
-        public string UserPicturePath { get; set; }
     }
 
     public class RegisterViewModel

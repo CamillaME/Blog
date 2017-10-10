@@ -185,7 +185,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID FROM Entries WHERE UserID = '" + userID + "'";
+                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished FROM Entries WHERE UserID = '" + userID + "'";
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -196,7 +196,6 @@ namespace Blog.DAL
                     entry.EntryDate = reader.GetDateTime(2);
                     entry.EntryText = reader.GetString(3);
                     entry.EntryIsPublished = reader.GetBoolean(4);
-                    entry.UserID = reader.GetString(5);
                     result.Add(entry);
                 }
             }
