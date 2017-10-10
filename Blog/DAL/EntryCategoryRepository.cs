@@ -12,7 +12,7 @@ namespace Blog.DAL
         public void CreateEntryCategory(EntryCategoryModel entryCategory)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -34,7 +34,7 @@ namespace Blog.DAL
         public void DeleteEntryCategory(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -58,7 +58,7 @@ namespace Blog.DAL
             EntryCategoryModel result = new EntryCategoryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -154,7 +154,7 @@ namespace Blog.DAL
             List<EntryCategoryModel> result = new List<EntryCategoryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -188,7 +188,7 @@ namespace Blog.DAL
             List<EntryCategoryModel> result = new List<EntryCategoryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {

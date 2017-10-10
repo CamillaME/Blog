@@ -1,12 +1,11 @@
 ﻿@model Blog.ViewModels.EntryVM
-
 @{
-    ViewBag.Title = "ShowEntry";
+    ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Vis indlæg</h1>
-<a href="/Entry/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>
+<a href="/home/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>
 <hr />
 <div class="well">
     <p>
@@ -16,12 +15,7 @@
                 Udgivet
             </b>
         }
-        else
-        {
-            <b>
-                Kladde
-            </b>
-        }
+
     </p>
 
     <i>@Model.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
@@ -30,3 +24,4 @@
         @Html.Raw(Model.Text.Replace(Environment.NewLine, "<br/>"))
     </p>
 </div>
+<a href="/home/Index/" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Tilbage til forsiden</a>

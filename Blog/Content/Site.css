@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color:silver;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -28,24 +29,52 @@ textarea {
     margin-left: 0 !important;
 }
 
+.well{
+    padding:0px;
+    margin-bottom: 0px;
+    background-color: dimgray;
+    border:0px;
+}
+
 .line{
     border-right:1px solid lightgray;
     display:inline-block;
     float:left;
-    width: 800px;
+    width: 68%;
     padding-right:10px;
 }
 
 footer {
     width: 100%;
     clear: both;
+    padding-top:10px;
 }
 
 .profile{
-    width:340px;
+    width:32%;
     padding-left: 10px;
     float:right;
+    background-color:dimgray;
+    border-radius: 4px;
 }
+
+.loginList {
+    list-style: none;
+}
+
+.login{
+    padding-bottom:1%;
+    display:inline;
+}
+
+/*.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}*/
 
 p.pub {
     height: 230px;

@@ -44,6 +44,19 @@ namespace Blog.Controllers
             return View(model);
         }
 
+        public ActionResult Show(int id)
+        {
+            EntryRepository entryRepository = new EntryRepository();
+            EntryModel entry = entryRepository.GetEntry(id);
+            EntryVM model = new EntryVM();
+            model.Id = entry.EntryID;
+            model.Title = entry.EntryTitle;
+            model.Text = entry.EntryText;
+            model.IsPublished = entry.EntryIsPublished;
+            model.Date = entry.EntryDate;
+            return View(model);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
