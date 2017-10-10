@@ -168,43 +168,66 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditEntry(EntryVM model)
         {
             EntryModel entry = new EntryModel();
 
-            entry.EntryID = model.Id;
-            entry.EntryTitle = model.Title;
-            entry.EntryText = model.Text;
-
-            //if (entry.EntryIsPublished == true && model.IsPublished == true)
-            //{
-            //    entry.EntryDate = DateTime.Now;
-            //}
-            //else
-            //{
-            //    entry.EntryDate = entry.EntryDate;
-            //}
-            EntryRepository entryRepository1 = new EntryRepository();
-            EntryModel entry1 = entryRepository1.GetEntry(entry.EntryID);
-
-            if (entry1.EntryIsPublished == true && model.IsPublished)
+            if (model.Title.Contains("<"))
             {
-                entry.EntryDate = model.Date;
+                model.ResultVisble = "display: block";
+                model.Result = "Du kan ikke skrive HTML eller JavaScript i titlen...";
+                model.Title = "";
+                model.Text = model.Text;
+                return View(model);
             }
-            else if (entry.EntryIsPublished == false && model.IsPublished)
+            else if ((model.Text != null && model.Text.Contains("<script")) ||
+                model.Text != null && model.Text.Contains("&lt;script"))
             {
-                entry.EntryDate = DateTime.Now;
+                model.ResultVisble = "display: block";
+                model.Result = "Du kan ikke skrive JavaScript i indlæget...";
+                model.Title = model.Title;
+                model.Text = "";
+                return View(model);
             }
             else
             {
-                entry.EntryDate = DateTime.Now;
+                entry.EntryID = model.Id;
+                entry.EntryTitle = model.Title;
+                entry.EntryText = model.Text;
+
+                //if (entry.EntryIsPublished == true && model.IsPublished == true)
+                //{
+                //    entry.EntryDate = DateTime.Now;
+                //}
+                //else
+                //{
+                //    entry.EntryDate = entry.EntryDate;
+                //}
+                EntryRepository entryRepository1 = new EntryRepository();
+                EntryModel entry1 = entryRepository1.GetEntry(entry.EntryID);
+
+                if (entry1.EntryIsPublished == true && model.IsPublished)
+                {
+                    entry.EntryDate = model.Date;
+                }
+                else if (entry.EntryIsPublished == false && model.IsPublished)
+                {
+                    entry.EntryDate = DateTime.Now;
+                }
+                else
+                {
+                    entry.EntryDate = DateTime.Now;
+                }
+
+                entry.EntryIsPublished = model.IsPublished;
+
+                EntryRepository entryRepository = new EntryRepository();
+                entryRepository.UpdateEntry(entry);
+                //return RedirectToAction("Index");
+
+                return RedirectToAction("Index", "EntryCategory", new { id = entry.EntryID });
             }
-
-            entry.EntryIsPublished = model.IsPublished;
-
-            EntryRepository entryRepository = new EntryRepository();
-            entryRepository.UpdateEntry(entry);
-            return RedirectToAction("Index");
         }
 
         public ActionResult ShowEntry(int id)
@@ -227,12 +250,12 @@ namespace Blog.Controllers
 
             List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(id);
 
-            entryRepository.DeleteEntry(id);
-
-            foreach(EntryCategoryModel entryCategory in entryCategories)
+            foreach (EntryCategoryModel entryCategory in entryCategories)
             {
                 entryCategoryRepository.DeleteEntryCategory(entryCategory.EntryCategoryID);
             }
+
+            entryRepository.DeleteEntry(id);
 
             return RedirectToAction("Index");
 
