@@ -15,8 +15,8 @@
                 <p>
                     @{ int counter = 0; }
                     @foreach (var categoryname in entryvm.CategoryNames)
-                {
-                    counter++;
+                    {
+                        counter++;
                         @categoryname
                         if (counter < entryvm.CategoryNames.Count)
                         {
