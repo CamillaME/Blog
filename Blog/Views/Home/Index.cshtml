@@ -11,6 +11,18 @@
         <div class="well">
             <div class="pub">
                 <p>
+                    @{ int counter = 0; }
+                    @foreach (var categoryname in entryvm.CategoryNames)
+                {
+                    counter++;
+                        @categoryname
+                        if (counter < entryvm.CategoryNames.Count)
+                        {
+                            @Html.Raw(", ")
+                        }
+                    }
+                </p>
+                <p>
                     @if (entryvm.IsPublished == true)
                 {
                         <b>

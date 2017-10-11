@@ -269,3 +269,4 @@ Blog/DAL/CategoryRepository.cs
 Blog/DAL/EntryCategoryRepository.cs
 Blog/DAL/UserRepository.cs
 Blog/Web.config
+Blog/DAL/EntryRepository.cs
