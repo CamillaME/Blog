@@ -13,13 +13,9 @@ namespace Blog.DAL
         public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-<<<<<<< HEAD
             //https://www.connectionstrings.com/store-connection-string-in-webconfig/
             string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
             connection.ConnectionString = connStr;
-=======
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
->>>>>>> 5893118e3be1c75f7b135f107882218c68d5e5c4
 
             try
             {
@@ -55,13 +51,9 @@ namespace Blog.DAL
         public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-<<<<<<< HEAD
             //https://www.connectionstrings.com/store-connection-string-in-webconfig/
             string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
             connection.ConnectionString = connStr;
-=======
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
->>>>>>> 5893118e3be1c75f7b135f107882218c68d5e5c4
 
             try
             {
@@ -96,13 +88,9 @@ namespace Blog.DAL
         public void DeleteEntry(int id)
         {
             SqlConnection connection = new SqlConnection();
-<<<<<<< HEAD
             //https://www.connectionstrings.com/store-connection-string-in-webconfig/
             string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
             connection.ConnectionString = connStr;
-=======
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
->>>>>>> 5893118e3be1c75f7b135f107882218c68d5e5c4
 
             try
             {
@@ -126,13 +114,9 @@ namespace Blog.DAL
             EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
-<<<<<<< HEAD
             //https://www.connectionstrings.com/store-connection-string-in-webconfig/
             string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
             connection.ConnectionString = connStr;
-=======
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
->>>>>>> 5893118e3be1c75f7b135f107882218c68d5e5c4
 
             try
             {
@@ -167,13 +151,10 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-<<<<<<< HEAD
             //https://www.connectionstrings.com/store-connection-string-in-webconfig/
             string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
             connection.ConnectionString = connStr;
-=======
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
->>>>>>> 5893118e3be1c75f7b135f107882218c68d5e5c4
+
 
             try
             {
@@ -210,13 +191,9 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-<<<<<<< HEAD
             //https://www.connectionstrings.com/store-connection-string-in-webconfig/
             string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
             connection.ConnectionString = connStr;
-=======
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
->>>>>>> 5893118e3be1c75f7b135f107882218c68d5e5c4
 
             try
             {
