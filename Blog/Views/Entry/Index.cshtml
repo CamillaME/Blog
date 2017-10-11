@@ -11,76 +11,47 @@
     @foreach (var entryvm in Model.Entries)
     {
         <div class="well">
-            <p>
-                @{ int counter = 0; }
-                @foreach (var categoryname in entryvm.CategoryNames)
+            <div class="pub">
+                <p>
+                    @{ int counter = 0; }
+                    @foreach (var categoryname in entryvm.CategoryNames)
                 {
                     counter++;
-                    @categoryname
-                    if (counter < entryvm.CategoryNames.Count)
-                    {
-                        @Html.Raw(", ")
+                        @categoryname
+                        if (counter < entryvm.CategoryNames.Count)
+                        {
+                            @Html.Raw(", ")
+                        }
                     }
-                }
-            </p>
-            <p>
-                @if (entryvm.IsPublished == true)
-                {
-                    <b>
-                        Udgivet
-                    </b>
-                    <span>|</span>
-                    <b>Skrevet af <i><a href="#">@entryvm.UserName</a></i></b>
-                }
-                else
-                {
-                    <b>
-                        Kladde
-                    </b>
-                    <span>|</span>
-                    <b>Skrevet af <i><a href="#">@entryvm.UserName</a></i></b>
-                }
-<<<<<<< HEAD
-            }
-        </p>
-        <p>
-            @if (entryvm.IsPublished == true)
-            {
-                <b>
-                    Udgivet
-                </b>
-                <span>|</span>
-                <b>Skrevet af <i><a href="/User/Index/@entryvm.UserID">@entryvm.UserName</a></i></b>
-            }
-            else
-            {
-                <b>
-                    Kladde
-                </b>
-                <span>|</span>
-                <b>Skrevet af <i><a href="#">@entryvm.UserName</a></i></b>
-            }
-        </p>
-        <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
-        <h2>@entryvm.Title</h2>
-        <p>
-            @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
-        </p>
-        <div class="text-right">
-            <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
-            <a href="/Entry/EditEntry/@entryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
-            <a href="/Entry/DeleteEntry/@entryvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('Du er ved at slette et indlæg. Er du sikker på, du vil fortsætte?')">Slet</a>
-=======
-            </p>
-            <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
-            <h2>@entryvm.Title</h2>
-            <p>
-                @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
-            </p>
+                </p>
+                <p>
+                    @if (entryvm.IsPublished == true)
+                    {
+                        <b>
+                            Udgivet
+                        </b>
+                        <span>|</span>
+                        <b>Skrevet af <i><a href="/User/Index/@entryvm.UserID">@entryvm.UserName</a></i></b>
+                    }
+                    else
+                    {
+                        <b>
+                            Kladde
+                        </b>
+                        <span>|</span>
+                        <b>Skrevet af <i><a href="/User/Index/@entryvm.UserID">@entryvm.UserName</a></i></b>
+                    }
+                </p>
+                <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
+                <h2>@entryvm.Title</h2>
+                <p>
+                    @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
+                </p>
+            </div>
             <div class="text-right">
-                <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
-                <a href="/Entry/EditEntry/@entryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
-                <a href="/Entry/DeleteEntry/@entryvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('Du er ved at slette et indlæg. Er du sikker på, du vil fortsætte?')">Slet</a>
+                    <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
+                    <a href="/Entry/EditEntry/@entryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
+                    <a href="/Entry/DeleteEntry/@entryvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('Du er ved at slette et indlæg. Er du sikker på, du vil fortsætte?')">Slet</a>
             </div>
         </div>
       }
@@ -89,7 +60,6 @@
     <div class="well">
         <div class="login">
             @Html.Partial("_loginViewFront")
->>>>>>> 6b959626658b26d2b0259ee49e6b8f9063480a40
         </div>
     </div>
 </div>
