@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*https://stackoverflow.com/questions/24958602/how-to-add-only-those-script-and-css-files-necessary-to-views-with-partial-views*@
 @Styles.Render("~/Content/summernote")
 
 <h1>Rediger indlæg</h1>
@@ -27,6 +28,7 @@
     <input type="submit" name="CreateEntry" value="Opdater indlæg" class="btn btn-success" />
 </form>
 <script>
+    //https://stackoverflow.com/questions/7960208/jquery-if-checkbox-is-checked
     function checkCheckbox() {
         if ($('input.checkbox_check').is(':checked')) {
             $('input.checkbox_check').val('true');

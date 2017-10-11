@@ -75,6 +75,7 @@ namespace Blog.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+            //https://go.microsoft.com/fwlink/?LinkId=301864
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -151,6 +152,8 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                https://go.microsoft.com/fwlink/?LinkId=301864
+
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, UserDescription = "", UserAge = 0, UserPicturePath = "" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

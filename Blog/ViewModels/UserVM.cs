@@ -19,6 +19,7 @@ namespace Blog.ViewModels
 
         public int Age { get; set; }
 
+        //https://stackoverflow.com/questions/10757604/file-upload-bound-to-the-viewmodel
         public HttpPostedFileBase PicturePath { get; set; }
     }
 }

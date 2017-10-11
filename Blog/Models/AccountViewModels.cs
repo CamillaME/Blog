@@ -52,6 +52,8 @@ namespace Blog.Models
 
     public class LoginViewModel
     {
+        //https://go.microsoft.com/fwlink/?LinkId=301864
+
         [Required]
         [Display(Name = "Brugernavn")]
         public string UserName { get; set; }
@@ -71,6 +73,8 @@ namespace Blog.Models
 
     public class RegisterViewModel
     {
+        //https://go.microsoft.com/fwlink/?LinkId=301864
+
         [Required]
         [Display(Name = "Brugernavn")]
         public string UserName { get; set; }

@@ -29,6 +29,7 @@ namespace Blog.Controllers
 
             List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
 
+            //https://stackoverflow.com/questions/22624470/get-current-user-id-in-asp-net-identity-2-0
             UserModel userLoggedIn = userRepository.GetUser(User.Identity.GetUserId());
 
             foreach (EntryModel entry in entries)

@@ -31,6 +31,8 @@ namespace Blog.Controllers
             List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
 
             UserModel userBlog = userRepository.GetUser(Url.RequestContext.RouteData.Values["id"].ToString());
+
+            //https://stackoverflow.com/questions/22624470/get-current-user-id-in-asp-net-identity-2-0
             UserModel userLoggedIn = userRepository.GetUser(User.Identity.GetUserId());
 
             EntryVM model = new EntryVM();
@@ -124,6 +126,7 @@ namespace Blog.Controllers
             {
                 string dirPath = "~/Content/images/" + user.UserID + "/";
 
+                //https://stackoverflow.com/questions/6149169/automatic-create-folders-in-directory-c-sharp
                 if (!Directory.Exists(Server.MapPath(dirPath)))
                 {
                     Directory.CreateDirectory(Server.MapPath(dirPath));

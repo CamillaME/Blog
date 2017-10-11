@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Blog.Controllers
 {
+    //https://stackoverflow.com/questions/22591252/asp-net-mvc4-restrict-all-pages-for-a-non-logged-user
     [Authorize]
     public class EntryController : Controller
     {
@@ -18,6 +19,7 @@ namespace Blog.Controllers
         {
             EntryRepository entryRepository = new EntryRepository();
 
+            //https://stackoverflow.com/questions/22624470/get-current-user-id-in-asp-net-identity-2-0
             List<EntryModel> entries = entryRepository.GetAllEntries(User.Identity.GetUserId());
 
             List<EntryVM> entriesVms = new List<EntryVM>();
@@ -107,6 +109,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        //https://msdn.microsoft.com/en-us/library/hh882339.aspx
         [ValidateInput(false)]
         public ActionResult CreateEntry(EntryVM model)
         {
@@ -139,6 +142,7 @@ namespace Blog.Controllers
                 EntryRepository entryRepository = new EntryRepository();
                 entryRepository.CreateEntry(entry);
 
+                //https://stackoverflow.com/questions/31488987/redirecttoaction-with-model-and-list-properties/31489079#31489079
                 return RedirectToAction("Index", "EntryCategory", new { id = entry.EntryID });
             }
         }
@@ -169,6 +173,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        //https://msdn.microsoft.com/en-us/library/hh882339.aspx
         [ValidateInput(false)]
         public ActionResult EditEntry(EntryVM model)
         {
@@ -197,14 +202,6 @@ namespace Blog.Controllers
                 entry.EntryTitle = model.Title;
                 entry.EntryText = model.Text;
 
-                //if (entry.EntryIsPublished == true && model.IsPublished == true)
-                //{
-                //    entry.EntryDate = DateTime.Now;
-                //}
-                //else
-                //{
-                //    entry.EntryDate = entry.EntryDate;
-                //}
                 EntryRepository entryRepository1 = new EntryRepository();
                 EntryModel entry1 = entryRepository1.GetEntry(entry.EntryID);
 
@@ -225,8 +222,8 @@ namespace Blog.Controllers
 
                 EntryRepository entryRepository = new EntryRepository();
                 entryRepository.UpdateEntry(entry);
-                //return RedirectToAction("Index");
 
+                //https://stackoverflow.com/questions/31488987/redirecttoaction-with-model-and-list-properties/31489079#31489079
                 return RedirectToAction("Index", "EntryCategory", new { id = entry.EntryID });
             }
         }

@@ -21,6 +21,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
+                //https://social.msdn.microsoft.com/Forums/vstudio/en-US/2e93eefe-aa26-4f25-8d84-c80f71469942/convert-c-datetime-to-sql-datetime?forum=csharpgeneral
                 var sqlFormattedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 var isPublished = 1;

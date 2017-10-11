@@ -17,6 +17,7 @@ namespace Blog.Controllers
         {
             CategoryRepository categoryRepository = new CategoryRepository();
 
+            //https://stackoverflow.com/questions/22624470/get-current-user-id-in-asp-net-identity-2-0
             List<CategoryModel> categories = categoryRepository.GetCategories(User.Identity.GetUserId());
 
             List<CategoryVM> categoryVms = new List<CategoryVM>();
