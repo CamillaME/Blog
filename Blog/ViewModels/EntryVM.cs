@@ -37,10 +37,18 @@ namespace Blog.ViewModels
 
         public string UserID { get; set; }
 
+        //Bruger der er logget ind
         public string PicPath { get; set; }
 
         public string UserDescription { get; set; }
 
         public int UserAge { get; set; }
+
+        //Bruger profilen
+        public string OtherPicPath { get; set; }
+
+        public string OtherUserDescription { get; set; }
+
+        public int OtherUserAge { get; set; }
     }
 }

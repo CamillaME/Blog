@@ -1,5 +1,10 @@
 ﻿<ul class="loginList">
-    <li><img src="@Model.PicPath" class="avatar" /></li>
-    <li>@Model.UserAge</li>
-    <li>@Model.UserDescription</li>
+    <li><img src="@Model.OtherPicPath" class="avatar" /></li>
+    <li>Alder: 
+    @if (Model.OtherUserAge != 0)
+    {
+        @Model.OtherUserAge
+    }
+    </li>
+    <li>Beskrivelse: @Model.OtherUserDescription</li>
 </ul>

@@ -64,8 +64,18 @@ namespace Blog.Controllers
 
             EntryVM model = new EntryVM();
             model.Entries = entriesVms;
-            model.PicPath = "/" + userLoggedIn.PicturePath;
+
+            if (userLoggedIn.PicturePath != "")
+            {
+                model.PicPath = "/" + userLoggedIn.PicturePath;
+            }
+            else
+            {
+                model.PicPath = "/Content/images/avatar-1577909_640.png";
+            }
+
             model.UserAge = userLoggedIn.Age;
+
             model.UserDescription = userLoggedIn.Description;
 
             return View(model);

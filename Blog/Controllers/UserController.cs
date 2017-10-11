@@ -31,6 +31,7 @@ namespace Blog.Controllers
             List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
 
             UserModel userBlog = userRepository.GetUser(Url.RequestContext.RouteData.Values["id"].ToString());
+            UserModel userLoggedIn = userRepository.GetUser(User.Identity.GetUserId());
 
             EntryVM model = new EntryVM();
 
@@ -58,10 +59,30 @@ namespace Blog.Controllers
                 entriesVms.Add(entryVM);
             }
 
-            model.PicPath = "/" + userBlog.PicturePath;
-            model.UserAge = userBlog.Age;
-            model.UserDescription = userBlog.Description;
+            if (userBlog.PicturePath != "")
+            {
+                model.OtherPicPath = "/" + userBlog.PicturePath;
+            }
+            else
+            {
+                model.OtherPicPath = "/Content/images/avatar-1577909_640.png";
+            }
+
+            model.OtherUserAge = userBlog.Age;
+
+            model.OtherUserDescription = userBlog.Description;
             model.UserName = userBlog.UserName;
+
+            if (userLoggedIn.PicturePath != "")
+            {
+                model.PicPath = "/" + userLoggedIn.PicturePath;
+            }
+            else
+            {
+                model.PicPath = "/Content/images/avatar-1577909_640.png";
+            }
+
+            model.UserDescription = userLoggedIn.Description;
 
             model.Entries = entriesVms;
 
@@ -133,7 +154,7 @@ namespace Blog.Controllers
             {
                 List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(entry.EntryID);
 
-                foreach(EntryCategoryModel entryCategory in entryCategories)
+                foreach (EntryCategoryModel entryCategory in entryCategories)
                 {
                     entryCategoryRepository.DeleteEntryCategory(entryCategory.EntryCategoryID);
                 }
