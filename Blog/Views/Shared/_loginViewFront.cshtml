@@ -1,14 +1,20 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
         @Html.AntiForgeryToken()
 
         <ul class="loginList">
             <li><img src="@Model.PicPath" class="avatar" /></li>
-            <li>Alder: @Model.UserAge</li>
-            <li>Kort Beskrivelse: @Model.UserDescription</li>
+            @if (Model.UserAge != 0)
+            {
+                <li>Alder: @Model.UserAge</li>
+            }
+            @if (Model.UserDescription != "")
+            {
+                <li>Kort Beskrivelse: @Model.UserDescription</li>
+            }
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
