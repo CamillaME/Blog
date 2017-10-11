@@ -84,6 +84,12 @@ namespace Blog.Controllers
 
         public ActionResult Show(int id)
         {
+            EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
+
+            CategoryRepository categoryRepository = new CategoryRepository();
+
+            List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
+
             EntryRepository entryRepository = new EntryRepository();
             EntryModel entry = entryRepository.GetEntry(id);
             EntryVM model = new EntryVM();
@@ -92,6 +98,15 @@ namespace Blog.Controllers
             model.Text = entry.EntryText;
             model.IsPublished = entry.EntryIsPublished;
             model.Date = entry.EntryDate;
+
+            List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(entry.EntryID);
+
+            foreach (EntryCategoryModel entryCategory in entryCategories)
+            {
+                CategoryModel categoryModel = categoryRepository.GetCategory(entryCategory.CategoryID);
+                model.CategoryNames.Add(categoryModel.Name);
+            }
+
             return View(model);
         }
 
