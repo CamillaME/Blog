@@ -53,6 +53,10 @@ namespace Blog.Controllers
                     entryVM.CategoryNames.Add(categoryModel.Name);
                 }
 
+                model.PicPath = "/" + user.PicturePath;
+                model.UserAge = user.Age;
+                model.UserDescription = user.Description;
+
                 entriesVms.Add(entryVM);
             }
 

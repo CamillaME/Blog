@@ -6,7 +6,9 @@
         @Html.AntiForgeryToken()
 
         <ul class="loginList">
-            <li><img src="~/Content/Img/avatar-1577909_640.png" class="avatar" /></li>
+            <li><img src="@Model.PicPath" class="avatar" /></li>
+            <li>@Model.UserAge</li>
+            <li>@Model.UserDescription</li>
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>

@@ -23,6 +23,8 @@ namespace Blog.Controllers
 
             List<EntryVM> entriesVms = new List<EntryVM>();
 
+            UserModel userLoggedIn = userRepository.GetUser(User.Identity.GetUserId());
+
             foreach (EntryModel entry in entries)
             {
                 string userID = entryRepository.GetEntry(entry.EntryID).UserID;
@@ -37,17 +39,22 @@ namespace Blog.Controllers
                     entryVM.Date = entry.EntryDate;
                     entryVM.IsPublished = entry.EntryIsPublished;
                     entryVM.UserName = user.UserName;
+                    // entryVM.PicPath = userLoggedIn.PicturePath;
                     entriesVms.Add(entryVM);
                 }
                 else
                 {
                     continue;
                 }
-                
+
             }
 
             EntryVM model = new EntryVM();
             model.Entries = entriesVms;
+            model.PicPath = "/" + userLoggedIn.PicturePath;
+            model.UserAge = userLoggedIn.Age;
+            model.UserDescription = userLoggedIn.Description;
+
             return View(model);
         }
 

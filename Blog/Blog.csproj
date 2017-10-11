@@ -195,6 +195,7 @@
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CategoryRepository.cs" />
     <Compile Include="DAL\EntryCategoryRepository.cs" />
@@ -294,16 +295,14 @@
     <Content Include="Views\EntryCategory\Index.cshtml" />
     <Content Include="Views\EntryCategory\Delete.cshtml" />
     <Content Include="Views\Home\Show.cshtml" />
-    <Content Include="Views\Home\_loginViewFront.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\_loginViewFront.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
     <Content Include="Views\User\DeleteUser.cshtml" />
     <Content Include="Views\Shared\_loginViewFront.cshtml" />
+    <Content Include="Views\Shared\_userInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-	<Folder Include="Views\User\" />
     <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>

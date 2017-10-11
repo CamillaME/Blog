@@ -17,8 +17,6 @@ namespace Blog.ViewModels
 
         public string Description { get; set; }
 
-        //public string PicturePath { get; set; }
-
         public int Age { get; set; }
 
         public HttpPostedFileBase PicturePath { get; set; }

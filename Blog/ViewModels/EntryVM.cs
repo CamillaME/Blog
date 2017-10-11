@@ -36,5 +36,11 @@ namespace Blog.ViewModels
         }
 
         public string UserID { get; set; }
+
+        public string PicPath { get; set; }
+
+        public string UserDescription { get; set; }
+
+        public int UserAge { get; set; }
     }
 }
