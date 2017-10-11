@@ -1,6 +1,7 @@
 ﻿using Blog.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,9 @@ namespace Blog.DAL
         public void CreateCategory(CategoryModel category)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -34,7 +37,9 @@ namespace Blog.DAL
         public void UpdateCategory(CategoryModel category)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -56,7 +61,9 @@ namespace Blog.DAL
         public void DeleteCategory(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -80,7 +87,9 @@ namespace Blog.DAL
             List<CategoryModel> result = new List<CategoryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -115,7 +124,9 @@ namespace Blog.DAL
             CategoryModel result = new CategoryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {

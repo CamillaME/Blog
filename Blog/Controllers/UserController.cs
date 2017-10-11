@@ -30,6 +30,8 @@ namespace Blog.Controllers
 
             List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
 
+            UserModel userBlog = userRepository.GetUser(Url.RequestContext.RouteData.Values["id"].ToString());
+
             EntryVM model = new EntryVM();
 
             foreach (EntryModel entry in entries)
@@ -53,12 +55,13 @@ namespace Blog.Controllers
                     entryVM.CategoryNames.Add(categoryModel.Name);
                 }
 
-                model.PicPath = "/" + user.PicturePath;
-                model.UserAge = user.Age;
-                model.UserDescription = user.Description;
-
                 entriesVms.Add(entryVM);
             }
+
+            model.PicPath = "/" + userBlog.PicturePath;
+            model.UserAge = userBlog.Age;
+            model.UserDescription = userBlog.Description;
+            model.UserName = userBlog.UserName;
 
             model.Entries = entriesVms;
 

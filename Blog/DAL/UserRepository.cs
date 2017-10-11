@@ -1,6 +1,7 @@
 ﻿using Blog.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,9 @@ namespace Blog.DAL
             UserModel result = new UserModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -48,7 +51,9 @@ namespace Blog.DAL
         public void UpdateUser(UserModel user)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -70,7 +75,9 @@ namespace Blog.DAL
         public void DeleteUser(string id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {

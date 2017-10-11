@@ -1,6 +1,7 @@
 ﻿using Blog.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,9 @@ namespace Blog.DAL
         public void CreateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -48,7 +51,9 @@ namespace Blog.DAL
         public void UpdateEntry(EntryModel entry)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -83,7 +88,9 @@ namespace Blog.DAL
         public void DeleteEntry(int id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -107,7 +114,9 @@ namespace Blog.DAL
             EntryModel result = new EntryModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -142,7 +151,9 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {
@@ -179,7 +190,9 @@ namespace Blog.DAL
             List<EntryModel> result = new List<EntryModel>();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            //https://www.connectionstrings.com/store-connection-string-in-webconfig/
+            string connStr = ConfigurationManager.ConnectionStrings["BlogConnection"].ConnectionString;
+            connection.ConnectionString = connStr;
 
             try
             {

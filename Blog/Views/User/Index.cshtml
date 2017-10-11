@@ -4,7 +4,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<h1>Blog indlæg af </h1>
+<h1>Blog indlæg af @Model.UserName</h1>
 <hr />
 <div class="line">
     @foreach (var entryvm in Model.Entries)
