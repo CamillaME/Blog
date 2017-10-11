@@ -7,8 +7,8 @@
 
         <ul class="loginList">
             <li><img src="@Model.PicPath" class="avatar" /></li>
-            <li>@Model.UserAge</li>
-            <li>@Model.UserDescription</li>
+            <li>Alder: @Model.UserAge</li>
+            <li>Kort Beskrivelse: @Model.UserDescription</li>
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>

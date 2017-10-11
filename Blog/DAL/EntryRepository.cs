@@ -122,7 +122,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID FROM Entries WHERE EntryID = " + id;
+                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished, UserID FROM Entries WHERE EntryID = " + id ;
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 EntryModel entry = new EntryModel();
@@ -160,7 +160,7 @@ namespace Blog.DAL
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished FROM Entries";
+                command.CommandText = "SELECT EntryID, EntryTitle, EntryDate, EntryText, EntryIsPublished FROM Entries ORDER BY EntryDate DESC"";
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
