@@ -9,6 +9,18 @@
 <hr />
 <div class="well">
     <p>
+        @{ int counter = 0; }
+        @foreach (var categoryname in Model.CategoryNames)
+        {
+            counter++;
+            @categoryname
+            if (counter < Model.CategoryNames.Count)
+            {
+                @Html.Raw(", ")
+            }
+        }
+    </p>
+    <p>
         @if (Model.IsPublished == true)
             {
             <b>
