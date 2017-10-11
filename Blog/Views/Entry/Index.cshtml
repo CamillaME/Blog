@@ -33,33 +33,6 @@
                         <span>|</span>
                         <b>Skrevet af <i><a href="/User/Index/@entryvm.UserID">@entryvm.UserName</a></i></b>
                     }
-<<<<<<< HEAD
-                }
-            </p>
-            <p>
-                @if (entryvm.IsPublished == true)
-                {
-                    <b>
-                        Udgivet
-                    </b>
-                    <span>|</span>
-                    <b>Skrevet af <i><a href="/User/Index/@entryvm.UserID">@entryvm.UserName</a></i></b>
-                }
-                else
-                {
-                    <b>
-                        Kladde
-                    </b>
-                    <span>|</span>
-                    <b>Skrevet af <i><a href="/User/Index/@entryvm.UserID">@entryvm.UserName</a></i></b>
-                }
-            </p>
-            <i>@entryvm.Date.ToString("dd. MMMM yyyy kl. HH:mm")</i>
-            <h2>@entryvm.Title</h2>
-            <p>
-                @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
-            </p>
-=======
                     else
                     {
                         <b>
@@ -75,14 +48,13 @@
                     @Html.Raw(entryvm.Text.Replace(Environment.NewLine, "<br/>"))
                 </p>
             </div>
->>>>>>> a028c878b456ff8ee6fe0bbe97aec7983d96568a
             <div class="text-right">
                     <a href="/Entry/ShowEntry/@entryvm.Id" class="btn btn-xs btn-primary">Vis</a>
                     <a href="/Entry/EditEntry/@entryvm.Id" class="btn btn-xs btn-warning">Rediger</a>
                     <a href="/Entry/DeleteEntry/@entryvm.Id" class="btn btn-danger btn-xs" onclick="return confirm('Du er ved at slette et indlæg. Er du sikker på, du vil fortsætte?')">Slet</a>
             </div>
         </div>
-                    }
+     }
 </div>
 <div class="profile">
     <div class="well">
