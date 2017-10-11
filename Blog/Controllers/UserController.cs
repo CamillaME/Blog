@@ -82,6 +82,8 @@ namespace Blog.Controllers
                 model.PicPath = "/Content/images/avatar-1577909_640.png";
             }
 
+            model.UserAge = userLoggedIn.Age;
+
             model.UserDescription = userLoggedIn.Description;
 
             model.Entries = entriesVms;
