@@ -14,7 +14,7 @@ namespace Blog.DAL
             UserModel result = new UserModel();
 
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -48,7 +48,7 @@ namespace Blog.DAL
         public void UpdateUser(UserModel user)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
@@ -70,7 +70,7 @@ namespace Blog.DAL
         public void DeleteUser(string id)
         {
             SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = "Server=LAPTOP-0BL0FE3D\\SQLEXPRESS;Database=Blog;Integrated Security=SSPI";
+            connection.ConnectionString = "Server=localhost;Database=Blog;Integrated Security=SSPI";
 
             try
             {
