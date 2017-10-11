@@ -1,10 +1,13 @@
 ﻿<ul class="loginList">
     <li><img src="@Model.OtherPicPath" class="avatar" /></li>
-    <li>Alder: 
     @if (Model.OtherUserAge != 0)
     {
-        @Model.OtherUserAge
+        <li>
+           Alder: @Model.OtherUserAge
+        </li>
     }
-    </li>
-    <li>Beskrivelse: @Model.OtherUserDescription</li>
+    @if (Model.OtherUserDescription != "")
+    {
+        <li>Beskrivelse: @Model.OtherUserDescription</li>
+    }
 </ul>
