@@ -2,6 +2,7 @@
 using Blog.Models;
 using Blog.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -181,7 +182,17 @@ namespace Blog.Controllers
                 Directory.Delete(Server.MapPath("~/Content/images/" + id + "/"));
             }
 
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
             return RedirectToAction("Register", "Account");
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
         }
     }
 }

@@ -80,30 +80,13 @@ namespace Blog.Controllers
         }
 
         public ActionResult CreateEntry()
-        {
-            //CategoryRepository categoryRepository = new CategoryRepository();
-
-            //List<CategoryModel> categories = categoryRepository.GetCategories();
-
-            //List<CategoryVM> categoryVms = new List<CategoryVM>();
-
+        { 
             EntryVM model = new EntryVM();
             model.Result = "";
             model.Title = "";
             model.Text = "";
             model.IsPublished = false;
             model.ResultVisble = "display: none";
-
-            //foreach (CategoryModel category in categories)
-            //{
-            //    CategoryVM categoryVM = new CategoryVM();
-            //    categoryVM.Id = category.Id;
-            //    categoryVM.Name = category.Name;
-            //    categoryVM.Description = category.Description;
-            //    categoryVms.Add(categoryVM);
-            //}
-
-            //model.Categories = categoryVms;
 
             return View(model);
         }

@@ -13,10 +13,6 @@
             <div class="col-sm-3">
                 <input name="CategoryID" type="hidden" value="@categoryvm.Id" />
                 @categoryvm.Name
-                @*<input name="Create" type="submit" value='<span class="glyphicon glyphicon-plus"></span> Tilføj til kategori' class="btn btn-primary btn-xs" />*@
-                <p>
-                    @*<button name="Create" type="submit" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Tilføj til kategori</button>*@
-                </p>
                 <a href="/EntryCategory/Create/@Url.RequestContext.RouteData.Values["id"]/@categoryvm.Id" class="btn btn-success btn-xs" style="display:@categoryvm.IsCategory"><span class="glyphicon glyphicon-plus"></span> Tilføj til kategori</a>
                 <a href="/EntryCategory/Delete/@Url.RequestContext.RouteData.Values["id"]/@categoryvm.EntryCategoryID" class="btn btn-danger btn-xs" style="display:@categoryvm.IsNotCategory"><span class="glyphicon glyphicon-minus"></span> Fjern fra kategori</a>
             </div>
