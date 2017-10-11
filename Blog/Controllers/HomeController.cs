@@ -23,6 +23,12 @@ namespace Blog.Controllers
 
             List<EntryVM> entriesVms = new List<EntryVM>();
 
+            EntryCategoryRepository entryCategoryRepository = new EntryCategoryRepository();
+
+            CategoryRepository categoryRepository = new CategoryRepository();
+
+            List<EntryCategoryVM> entryCategoryVms = new List<EntryCategoryVM>();
+
             UserModel userLoggedIn = userRepository.GetUser(User.Identity.GetUserId());
 
             foreach (EntryModel entry in entries)
@@ -39,7 +45,14 @@ namespace Blog.Controllers
                     entryVM.Date = entry.EntryDate;
                     entryVM.IsPublished = entry.EntryIsPublished;
                     entryVM.UserName = user.UserName;
-                    // entryVM.PicPath = userLoggedIn.PicturePath;
+                    entryVM.UserID = user.UserID;
+                    List<EntryCategoryModel> entryCategories = entryCategoryRepository.GetEntryCategories(entry.EntryID);
+
+                    foreach (EntryCategoryModel entryCategory in entryCategories)
+                    {
+                        CategoryModel categoryModel = categoryRepository.GetCategory(entryCategory.CategoryID);
+                        entryVM.CategoryNames.Add(categoryModel.Name);
+                    }
                     entriesVms.Add(entryVM);
                 }
                 else
